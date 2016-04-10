@@ -1,5 +1,10 @@
 <?php
 include "get_content.php";
+include "valid_order.php";
+if ($_POST['submit'] === "Valider la commande")
+{
+	valid_order();
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,30 +16,31 @@ include "get_content.php";
 		<strong>Votre panier</strong>
 	</div>
 	<table>
-	<thead>
 		<tr>
-			<td></td>
 			<td>Produit</td>
 			<td>Prix </td>
 			<td>R&eacute;f&eacute;rence</td>
 			<td>Quantit&eacute;</td>
-			<td>Supprimer</td>
 		</tr>
-	<?php
-		$pasta = array();
-		$pasta = get_pasta();
-		foreach($pasta as $key=>$value): ?>
+	<?php if ($_SESSION['cart'])
+	{
+		foreach($_SESSION['cart'] as $key): ?>
 			<tr>
-				<td><img src=<?php echo "img/".$value['prod_name'].".png"?>></td>
-				<td><?php echo $value['prod_name'] ?></td>
-				<td><?php echo $value['price'] ?> &euro;</td>
-				<td><?php echo $value['ref'] ?></td>
-				<td><?php echo $value['quantity'] ?></td>
-				<td><input type="submit" name="submit" value=<?php echo "Supprimer ".$value['prod_name'] ?> /></td>
+				<td><?php echo $key['prod_name'] ?></td>
+				<td><?php echo $key['price'] ?> &euro;</td>
+				<td><?php echo $key['ref'] ?></td>
+				<td><?php echo $key['quantity'] ?></td>
+				<!-- <form action="cart.php" method="POST">
+				<td><input type="submit" name="submit" value=<?php echo "Retirer-".$key['prod_name'] ?> /></td>
+				</form> -->
 			</tr>
-		<?php endforeach;
+		<?php endforeach;}
 	 ?>	
-	</thead>
-	</table>	
+	</table>
+		<div>
+			<form class="forms" action="index.php" method="POST">
+				<input type="submit" name="submit" value="Valider la commande" />
+			</form>
+		</div>
 	<div>
 </div>

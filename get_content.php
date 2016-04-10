@@ -14,4 +14,9 @@ function get_adm()
 	$str = unserialize(file_get_contents("./private/admin"));
 	return ($str);
 }
+function get_order()
+{
+	$str = unserialize(file_get_contents("./private/order"));
+	return ($str);
+}
 ?>

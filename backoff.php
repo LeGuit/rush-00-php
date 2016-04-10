@@ -2,6 +2,7 @@
 include "auth.php";
 include "create_content.php";
 include "delete_content.php";
+include "get_content.php";
 session_start();
 $adm = load_from_file("admin");
 if ($_SESSION["user_mail"] !== $adm["mail"])
@@ -133,15 +134,19 @@ else if($_POST["submit"] == "Deconnexion")
 				<td>Adresse</td>
 				<td>Code Postal</td>
 			</tr>
-			<tr>
-				<td><?php echo $value['first_name'] ?></td>
-				<td><?php echo $value['last_name'] ?></td>
-				<td><?php echo $value['total'] ?> &euro;</td>
-				<td><?php echo $value['adress'] ?> </td>
-				<td><?php echo $value['zip'] ?></td>
-			</tr>
-		</table>
+		<?php
+			$order = array();
+			$order = get_order(); 
+			foreach($order as $key=>$value): ?>
+				<tr>
+					<td><?php echo $value['first_name'] ?></td>
+					<td><?php echo $value['last_name'] ?></td>
+					<td><?php echo $value['total_price'] ?> &euro;</td>
+					<td><?php echo $value['adress'] ?> </td>
+					<td><?php echo $value['zip'] ?></td>
+				</tr>
+			<?php endforeach;
+		 ?>	
 	</div>
-	<?php include "fragments/footer.php" ?>
 </body>
 </html>

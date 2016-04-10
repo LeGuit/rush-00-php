@@ -1,5 +1,14 @@
 <?php
+session_start();
 include "get_content.php";
+include "valid_order.php";
+if ($_POST['submit'])
+{
+$produit = explode("-", $_POST['submit']);
+unset($produit[0]);
+$produit = implode("",$produit);
+add_to_cart($produit);
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,7 +28,6 @@ include "get_content.php";
 				<td>Prix </td>
 				<td>R&eacute;f&eacute;rence</td>
 				<td>Quantit&eacute;</td>
-				<td></td>
 			</tr>
 		<?php
 			$pasta = array();
@@ -31,7 +39,9 @@ include "get_content.php";
 					<td><?php echo $value['price'] ?> &euro;</td>
 					<td><?php echo $value['ref'] ?></td>
 					<td><?php echo $value['quantity'] ?></td>
-					<td><input type="submit" name="submit" value=<?php echo "Ajouter ".$value['prod_name'] ?> /></td>
+					<form action="pasta_page.php" method="POST">
+					<td><input type="submit" name="submit" value=<?php echo "Ajouter-".$value['prod_name'] ?> /></td>
+					</form>
 				</tr>
 			<?php endforeach;
 		 ?>	
