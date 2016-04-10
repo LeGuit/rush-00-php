@@ -13,7 +13,7 @@
 	<thead>
 		<tr style="margin-bottom:20px">
 			<th class="cart">Produit</th>
-			<th class="cart">Description</th>
+			<th class="cart"></th>
 			<th class="cart">R&eacute;f.</th>
 			<th class="cart">Prix unitaire</th>
 			<th class="cart">Qt&eacute;</th>

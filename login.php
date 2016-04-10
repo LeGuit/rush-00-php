@@ -1,19 +1,16 @@
 <?php
+session_start();
 include "auth.php";
-if (isset($_POST["submit"]) && $_POST["submit"] == "OK"
-	&& ($users = load_users()) !== FALSE
-	&& ($users = user_add($users, $_POST["login"], $_POST["passwd"])) !== FALSE
-	&& save_users($users))
+if (auth($_POST["mail"], $_POST["passwd"]))
 {
-	header("Location: index.html");
-	echo "OK\n";
+	$users = load_users();
+	$_SESSION["name"] = user_get_name($users, $_POST["mail"]);
+	header("Location: account.php");
 }
 // else
-// {
-// 	header("Location: create.html");
-// 	echo "ERROR\n";
-// }
+// 	echo "Veuillez saisir des informations valides\n";
 ?>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Create Account</title>
@@ -24,17 +21,16 @@ if (isset($_POST["submit"]) && $_POST["submit"] == "OK"
 
 
 <div>
-<form class="forms" action="create.php" method="POST">
-	Identifiant: <input type="text" name="login" value="" />
+<form class="forms" action="login.php" method="POST">
+	<label for="id">Adresse mail : <input id="id" type="text" name="mail" value="" />
 	<br />
-	Mot de passe: <input type="password" name="passwd" value="" />
+	<label for="pass">Mot de passe: <input id="pass" type="password" name="passwd" value="" />
 	<br />
 	<input type="submit" name="submit" value="OK" />
 	<a class="buttonlink" href="create.php">Creer un compte</a>
 	<a class="buttonlink" href="modif.php">Modifier mon mot de passe</a>
 </form>
 </div>
-<?php include "fragments/footer.php" ?>
-
+<?php include "fragments/footer.php" ?>s
 </body>
 </html>

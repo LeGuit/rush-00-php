@@ -6,8 +6,8 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
-<div style="text-align: center; margin: 5px auto">
-	<ul id="menu">
+<div id="menu">
+	<ul>
 		<li><a href="index.php">Accueil</a></li>
 		<li><a href="pasta_page.php">Pates</a></li>
 		<li><a href="salsa_page.php">Sauces</a></li>

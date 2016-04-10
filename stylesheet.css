@@ -37,8 +37,12 @@ tr {
     font-weight: bold;
     color: #493D3B;
 }
+h1 {
+    color: #544738;
+}
 h2 {
     text-align: center;
+    color: #544738;
 }
 /*FORM*/
 input[type=text], input[type=password], input[type=mail], input[type=number], input[type=tel], select {
@@ -51,7 +55,7 @@ input[type=text], input[type=password], input[type=mail], input[type=number], in
     box-sizing: border-box;
 }
 
-input[type=submit] {
+.forms input[type=submit] {
     width: 33%;
     background-color: #4CAF50;
     color: white;
@@ -62,7 +66,7 @@ input[type=submit] {
     cursor: pointer;
 }
 
-input[type=submit]:hover {
+.forms input[type=submit]:hover {
     background-color: #45a049;
 }
 
@@ -86,12 +90,7 @@ input[type=submit]:hover {
 	background-color: #45a049;
 }
 /*HEADER*/
-#menu {
-	border-radius: 5px;
-    background-color: #f2f2f2;
-    width:700px;
-    margin: 5px auto;
-}
+
 #header {
     border-radius: 5px;
     background-color: #f2f2f2;
@@ -119,6 +118,34 @@ input[type=submit]:hover {
     position: absolute;
     top: 4px;
     right: 30px;
+}
+/*MENU*/
+#menu {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    width:700px;
+    height: 50px;
+    margin: 5px auto;
+}
+ul li {
+ float: left;
+ list-style: none;
+ margin-right: 1em; 
+}
+ 
+li a {
+ color: #544738;
+ text-decoration: none;
+ float: left;
+ font-size: 25px;
+ padding: 12px;
+}
+ 
+li a:hover {
+ color: #4CAF50;
+ -webkit-transform: rotate(-10deg) scale(1.2);
+ -moz-transform: rotate(-10deg) scale(1.2);
+ -o-transform: rotate(-10deg) scale(1.2);
 }
 
 /*FOOTER*/

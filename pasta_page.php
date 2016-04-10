@@ -1,4 +1,5 @@
 <?php
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -7,8 +8,12 @@
 	<link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
 <body style="background-color: grey">
-<?php include "fragments/pasta.php" ?>
+<?php include "fragments/head.php" ?>
 <?php include "fragments/menu.php" ?>
+<?php include "fragments/pasta.php" ?>
+<?php include "fragments/footer.php" ?>
+
+
 
 </body>
 </html>

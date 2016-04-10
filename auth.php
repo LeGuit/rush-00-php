@@ -2,7 +2,8 @@
 /*
 ** auth functions
 */
-$PASSWD_FILE = "passwd";
+include "loadsave.php";
+$PASSWD_FILE = "users";
 $PASSWD_HASH = "whirlpool";
 function load_users()
 {
@@ -14,21 +15,28 @@ function save_users($users)
 	global $PASSWD_FILE;
 	return (save_to_file($PASSWD_FILE, $users));
 }
-function user_get($users, $login)
+function user_get_name($users, $mail)
 {
 	foreach ($users as $user_data)
-		if ($user_data["login"] == $login)
-			return ($user_data);
+		if ($user_data["mail"] == $mail)
+			return ($user_data["first_name"]);
 	return (FALSE);
 }
-function user_chpasswd($users, $login, $old_passwd, $new_passwd)
+function user_get_id($users, $mail)
+{
+	foreach ($users as $user_data)
+		if ($user_data["mail"] == $mail)
+			return (TRUE);
+	return (FALSE);
+}
+function user_chpasswd($users, $mail, $old_passwd, $new_passwd)
 {
 	global $PASSWD_HASH;
-	if ($login == "" || $old_passwd == "" || $new_passwd == "")
+	if ($mail == "" || $old_passwd == "" || $new_passwd == "")
 		return (FALSE);
 	for ($i = 0; $i < count($users); $i++)
 	{
-		if ($users[$i]["login"] == $login)
+		if ($users[$i]["mail"] == $mail)
 		{
 			if ($users[$i]["passwd"] != hash($PASSWD_HASH, $old_passwd))
 				return (FALSE);
@@ -38,23 +46,45 @@ function user_chpasswd($users, $login, $old_passwd, $new_passwd)
 	}
 	return (FALSE);
 }
-function user_add($users, $login, $passwd)
+function user_add($users, $first_name, $last_name, $mail, $passwd, $adress, $zip, $tel, $news)
 {
 	global $PASSWD_HASH;
-	if ($login === "" || $passwd === ""
-		|| user_get($users, $login) !== FALSE)
+	if ($mail === "" || $passwd === ""
+		|| user_get_id($users, $mail) !== FALSE)
 		return (FALSE);
 	$users[] = array(
-		"login" => $login,
+		"first_name" => $first_name,
+		"last_name" => $last_name,
+		"mail" => $mail,
 		"passwd" => hash($PASSWD_HASH, $passwd),
+		"adress" => $adress,
+		"zip" => $zip,
+		"cell"=> $tel,
+		"news" => $news
 	);
 	return ($users);
 }
-function auth($login, $passwd)
+function admin_add($adm, $mail, $passwd)
+{
+	global $PASSWD_HASH;
+	if ($mail === "" || $passwd === ""
+		|| user_get_id($adm, $mail) !== FALSE)
+		return (FALSE);
+	$adm[] = array(
+		"mail" => $mail,
+		"passwd" => hash($PASSWD_HASH, $passwd),
+	);
+	return ($adm);
+}
+function save_adm($adm)
+{
+	return (save_to_file("admin", $adm));
+}
+function auth($mail, $passwd)
 {
 	global $PASSWD_HASH;
 	return (($users = $users = load_users()) !== FALSE
-		&& ($user = user_get($users, $login)) !== FALSE
+		&& ($user = user_get_id($users, $mail)) !== FALSE
 		&& $user["passwd"] == hash($PASSWD_HASH, $passwd));
 }
 ?>
