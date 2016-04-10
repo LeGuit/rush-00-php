@@ -20,6 +20,8 @@ if (isset($_POST["submit"]) && $_POST["submit"] == "OK"
 </head>
 <body style="background-color: grey">
 <?php include "fragments/head.php" ?>
+<?php include "fragments/menu.php" ?>
+
 
 <div>
 <form class="forms" action="create.php" method="POST">

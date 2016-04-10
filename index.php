@@ -8,6 +8,8 @@
 </head>
 <body style="background-color: grey">
 <?php include "fragments/head.php" ?>
+<?php include "fragments/menu.php" ?>
+
 
 <?php include "fragments/hp_body.php" ?>
 

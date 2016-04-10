@@ -8,7 +8,9 @@
 </head>
 <body style="background-color: grey">
 <?php include "fragments/head.php" ?>
+<?php include "fragments/menu.php" ?>
 
+<?php include "fragments/salsa.php" ?>
 
 <?php include "fragments/footer.php" ?>
 

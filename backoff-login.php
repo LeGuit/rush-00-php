@@ -3,12 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>FT_MINISHOP</title>
+	<title>BACKOFF</title>
 	<link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
 <body style="background-color: grey">
-<?php include "fragments/pasta.php" ?>
-<?php include "fragments/menu.php" ?>
+
+<?php include "fragments/backoff_body.php" ?>
 
 </body>
 </html>

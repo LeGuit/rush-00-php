@@ -18,6 +18,7 @@ else
 </head>
 <body style="background-color: grey">
 <?php include "fragments/head.php" ?>
+<?php include "fragments/menu.php" ?>
 <div>
 <form class="forms" action="modif.php" method="POST">
 	Identifiant: <input type="text" name="login" value="" />
