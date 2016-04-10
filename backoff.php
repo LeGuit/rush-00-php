@@ -57,6 +57,14 @@ else if($_POST["submit"] == "Deconnexion")
 <body style="background-color: grey">
 <?php include "fragments/head.php" ?>
 	<div>
+		<h2>D&eacute;connexion</h2>	
+		<div>
+			<form class="forms" action="account.php" method="POST">
+				<input style="background-color: red" type="submit" name="submit" value="Deconnexion" />
+			</form>
+		</div>
+	</div>
+	<div>
 		<h2>Changer l'admin</h2>
 		<form class="forms" action="backoff.php" method="POST">
 			<label for="id">Identifiant : </label><input id="id" type="text" name="login" value="" />
@@ -114,12 +122,26 @@ else if($_POST["submit"] == "Deconnexion")
 			<input style="background-color: red" type="submit" name="submit" value="Del_Pasta" />
 			<input style="background-color: red" type="submit" name="submit" value="Del_Sauce" />
 		</form>
-	</div><div>
-		<h2>D&eacute;connexion</h2>	
-		<div>
-			<form class="forms" action="account.php" method="POST">
-				<input style="background-color: red" type="submit" name="submit" value="Deconnexion" />
-			</form>
-		</div>
+	</div>
+	<div>
+		<h2>Commandes</h2>
+		<table>
+			<tr>
+				<td>Pr&eacute;nom</td>
+				<td>Nom</td>
+				<td>Montant </td>
+				<td>Adresse</td>
+				<td>Code Postal</td>
+			</tr>
+			<tr>
+				<td><?php echo $value['first_name'] ?></td>
+				<td><?php echo $value['last_name'] ?></td>
+				<td><?php echo $value['total'] ?> &euro;</td>
+				<td><?php echo $value['adress'] ?> </td>
+				<td><?php echo $value['zip'] ?></td>
+			</tr>
+		</table>
+	</div>
+	<?php include "fragments/footer.php" ?>
 </body>
 </html>
