@@ -2,6 +2,8 @@
 include "auth.php";
 include "create_content.php";
 include "delete_content.php";
+session_start();
+$adm = load_from_file("private/admin");
 if (isset($_POST["submit"]) && $_POST["submit"] == "Add_User"
 	&& ($users = load_users()) !== FALSE
 	&& ($users = user_add(

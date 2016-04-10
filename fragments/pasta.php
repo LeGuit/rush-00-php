@@ -19,7 +19,7 @@ include "get_content.php";
 				<td>Prix </td>
 				<td>R&eacute;f&eacute;rence</td>
 				<td>Quantit&eacute;</td>
-				<td>Ajouter au Panier</td>
+				<td></td>
 			</tr>
 		<?php
 			$pasta = array();
@@ -30,7 +30,7 @@ include "get_content.php";
 					<td><?php echo $value['price'] ?> &euro;</td>
 					<td><?php echo $value['ref'] ?></td>
 					<td><?php echo $value['quantity'] ?></td>
-					<td><?php echo "Add to cart" ?></td>
+					<td><input type="submit" name="submit" value="Ajouter au Panier" /></td>
 				</tr>
 			<?php endforeach;
 		 ?>	

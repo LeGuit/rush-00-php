@@ -5,6 +5,8 @@ if (file_exists("./private"))
 	@unlink("private/pasta");
 	@unlink("private/sauce");
 	@unlink("private/admin");
+	@unlink("private/cart");
+	@unlink("private/session");
 	@rmdir("./private");
 }
 if (!file_exists("./private"))
@@ -19,17 +21,27 @@ if (!file_exists("./private/users"))
 if (!@file_exists("./private/pasta"))
 {
 	$fh2 = @fopen("./private/pasta", 'w');
-	@fclose($hf2);
+	@fclose($fh2);
 }
 if (!@file_exists("./private/sauce"))
 {
 	$fh3 = @fopen("./private/sauce", 'w');
-	@fclose($hf3);
+	@fclose($fh3);
 }
 if (!@file_exists("./private/admin"))
 {
-	$fh3 = @fopen("./private/admin", 'w');
-	@fclose($hf3);
+	$fh4 = @fopen("./private/admin", 'w');
+	@fclose($fh4);
+}
+if (!@file_exists("./private/cart"))
+{
+	$fh5 = @fopen("./private/cart", 'w');
+	@fclose($fh5);
+}
+if (!@file_exists("./private/order"))
+{
+	$fh6 = @fopen("./private/order", 'w');
+	@fclose($fh6);
 }
 
 $tab = ['prod_name' => 'spaghetti', 'price' => 1, 'ref' => 'P_001', 'quantity' => 100];

@@ -1,14 +1,16 @@
 <?php
 session_start();
 include "auth.php";
+if (!empty($_SESSION["user_mail"]))
+	header("Location: account.php");
 if (auth($_POST["mail"], $_POST["passwd"]))
 {
 	$users = load_users();
-	$_SESSION["name"] = user_get_name($users, $_POST["mail"]);
+	$_SESSION["loggued_on_user"] = user_get_name($users, $_POST["mail"]);
+	$_SESSION["user_mail"] = user_get_mail($users, $_POST["mail"]);
 	header("Location: account.php");
 }
-// else
-// 	echo "Veuillez saisir des informations valides\n";
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,6 +33,6 @@ if (auth($_POST["mail"], $_POST["passwd"]))
 	<a class="buttonlink" href="modif.php">Modifier mon mot de passe</a>
 </form>
 </div>
-<?php include "fragments/footer.php" ?>s
+<?php include "fragments/footer.php" ?>
 </body>
 </html>

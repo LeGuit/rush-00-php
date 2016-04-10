@@ -13,5 +13,5 @@
 		</p>
 		<p id="copyright">&copy; gwoodwar ahamouda</p>
 </div>
-</hml>
+</html>
 ​

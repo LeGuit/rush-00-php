@@ -8,7 +8,7 @@
 </head>
 <div id="header">
 	<a id="home" href="index.php" title="Home"><img src="img/cuistot.png" ></a>
-	<a id="cart" href="cart.php" title="Cart"><img src="img/cart.png" style="width: 20px"></a>
+	<a id="cart_icon" href="cart.php" title="Cart"><img src="img/cart.png" style="width: 20px"></a>
 	<br />
 	<a id="log" href="login.php" title="Connect">Connexion</a>
 	<!-- if admin:admin display the button -->

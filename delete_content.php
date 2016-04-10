@@ -42,5 +42,25 @@ function delete_sauce($prod_name)
 	else
 		return FALSE;
 }
-
+function delete_from_cart($id)
+{
+	if (!$id)
+		return ;
+	$i = 0;
+	$str = unserialize(file_get_contents("./private/cart"));
+	foreach($str as $key)
+	{
+		if ($id == $key['session_id'])
+		{
+			$i = 1;
+		}
+		else
+			$new_str[] = $key;
+	}
+	file_put_contents("./private/cart", serialize($new_str));
+	if ($i == 1)
+		return TRUE;	
+	else
+		return FALSE;
+}
 ?>

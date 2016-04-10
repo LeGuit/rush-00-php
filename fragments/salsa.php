@@ -10,8 +10,8 @@ include "get_content.php";
 <div class="container">
 	<div>
 		<h1>
-			<img style="padding: 5px; width: 650px" src="img/pasta_head.png" alt="pasta_head" >
-			Notre gamme de p&acirc;tes
+			<img style="padding: 5px; width: 650px" src="img/salsa_head.png" alt="pasta_head" >
+			Notre gamme de Sauces
 		</h1>
 		<table>
 			<tr>
@@ -19,7 +19,6 @@ include "get_content.php";
 				<td>Prix </td>
 				<td>R&eacute;f&eacute;rence</td>
 				<td>Quantit&eacute;</td>
-				<td>Ajouter au Panier</td>
 			</tr>
 		<?php
 			$salsa = array();
@@ -30,7 +29,7 @@ include "get_content.php";
 					<td><?php echo $value['price'] ?> &euro;</td>
 					<td><?php echo $value['ref'] ?></td>
 					<td><?php echo $value['quantity'] ?></td>
-					<td><?php echo "Add to cart" ?></td>
+					<td><input type="submit" name="submit" value="Ajouter au Panier" /></td>
 				</tr>
 			<?php endforeach;
 		 ?>	

@@ -26,7 +26,14 @@ function user_get_id($users, $mail)
 {
 	foreach ($users as $user_data)
 		if ($user_data["mail"] == $mail)
-			return (TRUE);
+			return ($user_data);
+	return (FALSE);
+}
+function user_get_mail($users, $mail)
+{
+	foreach ($users as $user_data)
+		if ($user_data["mail"] == $mail)
+			return ($mail);
 	return (FALSE);
 }
 function user_chpasswd($users, $mail, $old_passwd, $new_passwd)
@@ -83,7 +90,7 @@ function save_adm($adm)
 function auth($mail, $passwd)
 {
 	global $PASSWD_HASH;
-	return (($users = $users = load_users()) !== FALSE
+	return (($users = load_users()) !== FALSE
 		&& ($user = user_get_id($users, $mail)) !== FALSE
 		&& $user["passwd"] == hash($PASSWD_HASH, $passwd));
 }
