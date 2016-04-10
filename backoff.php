@@ -3,7 +3,9 @@ include "auth.php";
 include "create_content.php";
 include "delete_content.php";
 session_start();
-$adm = load_from_file("private/admin");
+$adm = load_from_file("admin");
+if ($_SESSION["user_mail"] !== $adm["mail"])
+	header("Location: backoff-login.php");
 if (isset($_POST["submit"]) && $_POST["submit"] == "Add_User"
 	&& ($users = load_users()) !== FALSE
 	&& ($users = user_add(
@@ -40,6 +42,11 @@ else if (isset($_POST["submit"]) && $_POST["submit"] == "Del_Sauce"
 	&& (load_from_file("private/sauce")) !== FALSE
 	&& (delete_sauce($_POST["prod_name"]) !== FALSE))
 	;
+else if($_POST["submit"] == "Deconnexion")
+{
+	$_SESSION["user_mail"] = 0;
+	header("Location: index.php");
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -107,6 +114,12 @@ else if (isset($_POST["submit"]) && $_POST["submit"] == "Del_Sauce"
 			<input style="background-color: red" type="submit" name="submit" value="Del_Pasta" />
 			<input style="background-color: red" type="submit" name="submit" value="Del_Sauce" />
 		</form>
-	</div>
+	</div><div>
+		<h2>D&eacute;connexion</h2>	
+		<div>
+			<form class="forms" action="account.php" method="POST">
+				<input style="background-color: red" type="submit" name="submit" value="Deconnexion" />
+			</form>
+		</div>
 </body>
 </html>

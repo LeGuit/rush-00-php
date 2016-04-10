@@ -19,8 +19,7 @@ function save_to_file($file_name, $data)
 	if (!(file_exists($PRIVATE_DIR) || @mkdir($PRIVATE_DIR))
 		|| ($f = fopen($file_name, "w")) === FALSE)
 		return (FALSE);
-
-		if (@file_put_contents($file_name, serialize($data)) !== FALSE)
+	if (@file_put_contents($file_name, serialize($data)) !== FALSE)
 			$ok = TRUE;
 	fclose($f);
 	return ($ok);

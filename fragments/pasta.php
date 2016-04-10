@@ -1,6 +1,5 @@
 <?php
 include "get_content.php";
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,6 +14,7 @@ include "get_content.php";
 		</h1>
 		<table>
 			<tr>
+				<td></td>
 				<td>Produit</td>
 				<td>Prix </td>
 				<td>R&eacute;f&eacute;rence</td>
@@ -26,11 +26,12 @@ include "get_content.php";
 			$pasta = get_pasta(); 
 			foreach($pasta as $key=>$value): ?>
 				<tr>
+					<td><img src=<?php echo "img/".$value['prod_name'].".png"?>></td>
 					<td><?php echo $value['prod_name'] ?></td>
 					<td><?php echo $value['price'] ?> &euro;</td>
 					<td><?php echo $value['ref'] ?></td>
 					<td><?php echo $value['quantity'] ?></td>
-					<td><input type="submit" name="submit" value="Ajouter au Panier" /></td>
+					<td><input type="submit" name="submit" value=<?php echo "Ajouter ".$value['prod_name'] ?> /></td>
 				</tr>
 			<?php endforeach;
 		 ?>	

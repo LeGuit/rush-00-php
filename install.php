@@ -68,7 +68,7 @@ $stab = ['prod_name' => 'burro', 'price' => 1, 'ref' => 'S_001', 'quantity' => 1
 $stab1 = ['prod_name' => 'alfredo', 'price' => 1, 'ref' => 'S_002', 'quantity' => 100];
 $stab2 = ['prod_name' => 'acciughe', 'price' => 1, 'ref' => 'S_003', 'quantity' => 100];
 $stab3 = ['prod_name' => 'bolognese', 'price' => 1, 'ref' => 'S_004', 'quantity' => 100];
-$stab4 = ['prod_name' => 'frutti di mare', 'price' => 1, 'ref' => 'S_005', 'quantity' => 100];
+$stab4 = ['prod_name' => 'frutti_di_mare', 'price' => 1, 'ref' => 'S_005', 'quantity' => 100];
 $stab5 = ['prod_name' => 'noci', 'price' => 1, 'ref' => 'S_006', 'quantity' => 100];
 $stab6 = ['prod_name' => 'pesto', 'price' => 1, 'ref' => 'S_007', 'quantity' => 100];
 $stab7 = ['prod_name' => 'romana', 'price' => 1, 'ref' => 'S_008', 'quantity' => 100];

@@ -1,12 +1,17 @@
 <?php
 include "loadsave.php";
+session_start();
 $adm = load_from_file("../private/admin");
-if($_POST["submit"] == "OK")
+if($_POST["submit"] === "OK")
 {
-	if ($adm["mail"] == $_POST["login"] && $adm["passwd"] == hash("whirlpool", $_POST["passwd"]))
+	if ($adm["mail"] === $_POST["login"] && $adm["passwd"] === hash("whirlpool", $_POST["passwd"]))
+	{
+		$_SESSION = array();
+		$_SESSION["loggued_on_user"] = "root";
+		$_SESSION["user_mail"] = $_POST["login"];
 		header("Location: backoff.php");
+	}
 }
-
 ?>
 <!DOCTYPE html>
 <html>
